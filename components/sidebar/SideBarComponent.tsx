@@ -1,43 +1,33 @@
 "use client";
 
 import { Sidebar } from "flowbite-react";
-import {
-  HiArrowSmRight,
-  HiChartPie,
-  HiInbox,
-  HiShoppingBag,
-  HiTable,
-  HiUser,
-  HiViewBoards,
-} from "react-icons/hi";
-import Link from "next/link";
 
+import Link from "next/link";
+import { useState } from "react";
+import { MenuList } from "./menu";
+
+type MenuItems = {
+  name: string;
+  path: string;
+  icon: React.ElementType;
+};
 export default function SideBarComponent() {
+  const [menuList, setMenuList] = useState<MenuItems[]>(MenuList);
   return (
-    <Sidebar aria-label="Default sidebar example">
-      <Sidebar.Items>
+    <Sidebar aria-label="Default sidebar example ">
+      <Sidebar.Items className="h-screen bg-blue-300  ">
         <Sidebar.ItemGroup>
-          <Sidebar.Item as={Link} href="/dashboard" icon={HiChartPie}>
-            Dashboard
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiViewBoards} as={Link}>
-            Inbox
-          </Sidebar.Item>
-          <Sidebar.Item href="/setting" icon={HiInbox} label="3" as={Link}>
-            Setting
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiUser}>
-            Users
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiShoppingBag}>
-            Products
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiArrowSmRight}>
-            Sign In
-          </Sidebar.Item>
-          <Sidebar.Item href="#" icon={HiTable}>
-            Sign Up
-          </Sidebar.Item>
+          {menuList.map((items, index) => (
+            <Sidebar.Item
+              className="hover:text-black hover:bg-white "
+              key={index}
+              as={Link}
+              href={items.path}
+              icon={items.icon}
+            >
+              {items.name}
+            </Sidebar.Item>
+          ))}
         </Sidebar.ItemGroup>
       </Sidebar.Items>
     </Sidebar>

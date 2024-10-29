@@ -29,7 +29,7 @@ export default function NavbarComponent() {
     <Navbar fluid rounded>
       <NavbarBrand as={Link} href="">
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          Flowbite React
+          NEXT
         </span>
       </NavbarBrand>
 

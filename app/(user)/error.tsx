@@ -8,16 +8,21 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <div>
+    <div className="h-screen grid text-center place-content-center">
       <h2>Something went wrong!</h2>
-      <button
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
-      >
-        Try again
-      </button>
+      <div className="text-red-500">{error && <p>{error.message}</p>}</div>
+
+      <div>
+        <button
+          className="text-white justify-center w-32 rounded-lg bg-red-300"
+          onClick={
+            // Attempt to recover by trying to re-render the segment
+            () => reset()
+          }
+        >
+          Try again
+        </button>
+      </div>
     </div>
   );
 }
